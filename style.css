@@ -1,83 +1,206 @@
-/*Footer*/
-footer{
-    font-size:12px;
-}
+/* Footer */
+        footer {
+            font-size: 12px;
+            text-align: center;
+            color: #E9CC8D;
+            margin: 2rem 0;
+        }
 
-/*Header*/
-header {
-    font-size: initial;
-    text-align: center;
-    color: #E9CC8D;
-}
+        /* Header */
+        header {
+            font-size: initial;
+            text-align: center;
+            color: #E9CC8D;
+            font-family: 'UnifrakturCook', cursive;
+            margin-top: 1rem;
+        }
 
-/*Body*/
-body {
-    font-weight: 100;
-    font-size: 200%;
-    background: #141a2b;
-    background: linear-gradient(180deg, rgba(20, 26, 43, 1) 20%, rgba(8, 5, 41, 1) 90%);
-}
+        header .subtitle {
+            color: #C09FB2;
+            font-style: italic;
+            margin-top: 0.3em;
+            font-size: 1rem;
+            font-weight: 300;
+            text-align: center;
+        }
 
-.skin {
-    color: #C09FB2;
-}
+        /* Body */
+        body {
+            font-weight: 100;
+            font-size: 200%;
+            background-color: #141a2b;
+            background-image: url("https://transparenttextures.com/patterns/asfalt-dark.png");
+            /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */            position: relative;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0 1rem;
+            color: #F5EAE6;
+            font-family: Arial, sans-serif;
+        }
 
-.edge {
-    color: #E9CC8D;
-}
+        /* 噪点纹理叠加，替换为你的noise.png路径 */
+        body::after {
+            content: "";
+            pointer-events: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('resource/noise.png') repeat;
+            opacity: 0.04;
+            z-index: 0;
+        }
 
-h1 {
-    color: #E9CC8D;
-    text-align: center;
-}
+        .skin {
+            color: #C09FB2;
+        }
 
+        .edge {
+            color: #E9CC8D;
+        }
 
-/*Members*/
-.gallary {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content:center;
-}
+        h1 {
+            color: #E9CC8D;
+            text-align: center;
+            font-family: 'UnifrakturCook', cursive;
+        }
 
-.gallary div img {
-    border-radius: 15px 0px 15px 0px;
-    width: 288px;
-    height: auto;
-    border: 1px solid transparent;
-}
+        main p {
+            max-width: 900px;
+            margin: 1rem auto;
+            font-size: 1.1rem;
+        }
 
-.gallary div p {
-    color: #F5EAE6;
-    text-align: center;
-    margin-top: 10px;
-}
+        /* Members */
+        .gallary {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
 
-.stage:hover {
-    border: 1px solid white;
-    border-bottom: none;
-    border-left: none;
-    border-right:none;
-}
-.stage{
-    position: relative;
-    width:288px;
-    height:352px;
-    overflow:hidden;
-}
-.curtain {
-    position: absolute;
-    background-color: #141a2b;
-    top: 0;
-    transition: all 1s ease;
-}
+        .gallary div {
+            cursor: pointer;
+        }
 
-.open .curtain{
-    transform:translateY(-100%);
-}
+        .gallary div img {
+            border-radius: 15px 0 15px 0;
+            width: 288px;
+            height: auto;
+            border: 1px solid transparent;
+            user-select: none;
+            pointer-events: none;
+            display: block;
+        }
 
-/*Live*/
-.live {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
+        .gallary div p {
+            color: #F5EAE6;
+            text-align: center;
+            margin-top: 10px;
+            user-select: none;
+            font-size: 1.1rem;
+        }
+
+        .stage {
+            position: relative;
+            width: 288px;
+            height: 352px;
+            overflow: hidden;
+            border-top: 2px solid transparent;
+            transition: border-top 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stage:hover {
+            border-top: 2px solid #E9CC8D;
+            box-shadow: 0 0 15px 5px rgba(233, 204, 141, 0.7);
+        }
+
+        .curtain {
+            position: absolute;
+            background: linear-gradient(to bottom, #141a2b, #522D5B);
+            top: 0;
+            left: 0; right: 0; bottom: 0;
+            transition: transform 1s ease;
+            opacity: 0.95;
+            pointer-events: none;
+        }
+
+        /* Live */
+        .live {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        iframe {
+            border-radius: 12px;
+            box-shadow: 0 0 20px #E9CC8D88;
+        }
+
+        /* Modal 弹窗样式 */
+        .modal {
+            display: none; /* 默认隐藏 */
+            position: fixed;
+            z-index: 1000;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-content {
+            background-color: #222;
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 12px;
+            width: 320px;
+            color: #E9CC8D;
+            text-align: center;
+            box-shadow: 0 0 20px #E9CC8D;
+            font-family: 'UnifrakturCook', cursive;
+            position: relative;
+        }
+
+        .modal-content img {
+            border-radius: 15px 0 15px 0;
+            margin: 10px 0;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .close-btn {
+            color: #E9CC8D;
+            position: absolute;
+            right: 15px;
+            top: 10px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .close-btn:hover {
+            color: #F5EAE6;
+        }
+
+        /* 响应式适配小屏幕 */
+        @media (max-width: 640px) {
+            body {
+                font-size: 150%;
+            }
+            .gallary div img {
+                width: 90vw;
+            }
+            .stage {
+                width: 90vw;
+                height: auto;
+            }
+            iframe {
+                width: 90vw;
+                height: calc(90vw * 9 / 16);
+            }
+            .modal-content {
+                width: 90vw;
+            }
+        }
